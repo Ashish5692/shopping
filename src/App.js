@@ -6,10 +6,10 @@ import { itemContext } from './itemContext';
 
 
 function App() {
-  const [total, setTotal] = useState(121);
+  const [total, setTotal] = useState(0);
   const [item, setItem] = useState(0);
   return (
-      <itemContext.Provider value= {{total, setTotal}}>
+      <itemContext.Provider value= {{total, setTotal,item,setItem}}>
         <div className='App'>
           <h2>Shopping Cart</h2>
             <Navbar />
