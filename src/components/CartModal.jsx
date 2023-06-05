@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "../styles/CartModal.module.css";
 
-function CartModal() {
+function CartModal({toggle}) {
   return (
     <div className={styles.cartModal}>
       <div className={styles.closeButton} onClick={toggle}>
         Close
       </div>
-      <div className={styles.clearButton} onClick={clear}>
+      <div className={styles.clearButton} >
         Clear
       </div>
       <div className={styles.itemContainer}></div>

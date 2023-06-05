@@ -1,4 +1,5 @@
 import { createContext,useState,useContext } from "react";
+import CartModal from "./components/CartModal";
 
 //creation of context
 const itemContext = createContext();  
@@ -14,6 +15,7 @@ function useValue(){
 function CustomItemContext({children}){
     const [total, setTotal] = useState(0);
     const [item, setItem] = useState(0);
+    const [showCart, setShowCart] = useState(false);
 
     //logic of manipulating the state
     const handleAdd = (price) => {
@@ -35,11 +37,16 @@ function CustomItemContext({children}){
         setItem(0);
       }
 
+      const toggle =() =>{
+        setShowCart(!showCart);
+      }
+
     return (
         //CustomProvider making use of  default provider here ,making use of children
         <itemContext.Provider value ={
-            {total,item,handleAdd,handleRemove,clear}   //passing the values to access in other components
+            {total,item,handleAdd,handleRemove,clear,toggle}   //passing the values to access in other components
         }>
+            {showCart && <CartModal toggle={toggle}/>}
             {children}
         </itemContext.Provider>
     )
