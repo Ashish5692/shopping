@@ -1,6 +1,7 @@
 import { createContext,useState,useContext } from "react";
 
-const itemContext = createContext();  //creation of context
+//creation of context
+const itemContext = createContext();  
 
 //extracting/consuming the value from this file only
 function useValue(){
@@ -9,7 +10,7 @@ function useValue(){
     return value;
 }
 
-//providing the context
+//providing the context //created the customProvider...   accesssing the children here
 function CustomItemContext({children}){
     const [total, setTotal] = useState(0);
     const [item, setItem] = useState(0);
@@ -29,10 +30,15 @@ function CustomItemContext({children}){
         setItem(item-1);
       };
 
+      const clear = ()=>{
+        setTotal(0);
+        setItem(0);
+      }
+
     return (
-        //CustomProvider making use of  default provider here
+        //CustomProvider making use of  default provider here ,making use of children
         <itemContext.Provider value ={
-            {total,item,handleAdd,handleRemove}
+            {total,item,handleAdd,handleRemove,clear}   //passing the values to access in other components
         }>
             {children}
         </itemContext.Provider>
