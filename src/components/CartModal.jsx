@@ -4,7 +4,7 @@ import { useValue } from "../itemContext";
 
 function CartModal() {
 
-  const {cart,total,clear,toggle} = useValue();
+  const {cart,total,clear,toggle } = useValue();
 
   return (
     <div className={styles.cartModal}>
